@@ -10,7 +10,7 @@ namespace Selenia.Tests
         public void SearchSeleniumInGoogle()
         {
             Open("http://google.com");
-            S(By.Name("q")).Value("selenium");
+            S(By.Name("q")).Value("selenium").Enter();
         }
     }
 }

@@ -13,17 +13,24 @@ namespace Selenia.Core
 
         public override IMessage Invoke(IMessage msg)
         {
-            var methodCall = (IMethodCallMessage)msg;
-            var method = (MethodInfo)methodCall.MethodBase;
+            var methodCall = msg as IMethodCallMessage;
+            var method = methodCall.MethodBase as MethodInfo;
 
             object result = null;
-            if (methodCall.ArgCount == 0)
+            if ("Value" == method.Name)
             {
-                result = GetValue();
+                if (methodCall.ArgCount == 0)
+                {
+                    result = GetValue();
+                }
+                else
+                {
+                    SetValue(methodCall.Args[0] as string);
+                }
             }
-            else
+            else if ("Enter" == method.Name)
             {
-                SetValue(methodCall.Args[0] as string);
+                Delegate().SendKeys(Keys.Enter);
             }
 
             return new ReturnMessage(result, null, 0, methodCall.LogicalCallContext, methodCall);

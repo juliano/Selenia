@@ -7,5 +7,7 @@ namespace Selenia.Core
         string Value();
 
         SeleniaElement Value(string text);
+
+        SeleniaElement Enter();
     }
 }

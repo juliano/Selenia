@@ -15,7 +15,7 @@ namespace Selenia.Core
 
         public static SeleniaElement Create(By criteria)
         {
-            return (SeleniaElement)new WaitingSeleniaElement(null, criteria).GetTransparentProxy();
+            return new WaitingSeleniaElement(null, criteria).GetTransparentProxy() as SeleniaElement;
         }
 
         private ISearchContext GetSearchContext()
