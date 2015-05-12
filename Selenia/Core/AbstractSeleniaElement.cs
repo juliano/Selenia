@@ -16,7 +16,7 @@ namespace Selenia.Core
             var methodCall = msg as IMethodCallMessage;
             var method = methodCall.MethodBase as MethodInfo;
 
-            object result = null;
+            object result = GetTransparentProxy() as SeleniaElement;
             if ("Value" == method.Name)
             {
                 if (methodCall.ArgCount == 0)
