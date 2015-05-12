@@ -1,5 +1,7 @@
 ﻿using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
+using OpenQA.Selenium.Support.Events;
+using System;
 
 namespace Selenia.Core
 {
@@ -18,8 +20,14 @@ namespace Selenia.Core
             options.AddArgument("test-type");
             driver = new ChromeDriver(options);
             driver.Manage().Window.Maximize();
+            MarkForAutoClose(driver);
 
             return driver;
+        }
+
+        private void MarkForAutoClose(IWebDriver driver)
+        {
+            AppDomain.CurrentDomain.DomainUnload += (s, e) => driver.Quit();
         }
     }
 }
