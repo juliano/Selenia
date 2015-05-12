@@ -54,7 +54,6 @@
     <Compile Include="Core\Selenia.cs" />
     <Compile Include="Core\SeleniaElement.cs" />
     <Compile Include="Core\WaitingSeleniaElement.cs" />
-    <Compile Include="Core\WebDriverCloser.cs" />
     <Compile Include="Core\WebDriverContainer.cs" />
     <Compile Include="Core\WebDriverRunner.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
