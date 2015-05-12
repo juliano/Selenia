@@ -8,10 +8,7 @@ namespace Selenia.Core
     {
         private IWebDriver driver;
 
-        public IWebDriver GetWebDriver()
-        {
-            return driver != null ? driver : Create();
-        }
+        public IWebDriver GetWebDriver() => driver != null ? driver : Create();
 
         private IWebDriver Create()
         {
@@ -24,9 +21,7 @@ namespace Selenia.Core
             return driver;
         }
 
-        private void MarkForAutoClose(IWebDriver driver)
-        {
+        private void MarkForAutoClose(IWebDriver driver) =>
             AppDomain.CurrentDomain.DomainUnload += (s, e) => driver.Quit();
-        }
     }
 }

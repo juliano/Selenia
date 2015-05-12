@@ -36,10 +36,7 @@ namespace Selenia.Core
             return new ReturnMessage(result, null, 0, methodCall.LogicalCallContext, methodCall);
         }
 
-        private string GetValue()
-        {
-            return Delegate().GetAttribute("value");
-        }
+        private string GetValue() => Delegate().GetAttribute("value");
 
         private void SetValue(string text)
         {

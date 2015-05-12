@@ -13,19 +13,13 @@ namespace Selenia.Core
             this.context = context;
         }
 
-        public static SeleniaElement Create(By criteria)
-        {
-            return new WaitingSeleniaElement(null, criteria).GetTransparentProxy() as SeleniaElement;
-        }
+        public static SeleniaElement Create(By criteria) =>
+            new WaitingSeleniaElement(null, criteria).GetTransparentProxy() as SeleniaElement;
 
-        private ISearchContext GetSearchContext()
-        {
-            return context == null ? WebDriverRunner.GetWebDriver() : context;
-        }
+        private ISearchContext GetSearchContext() =>
+            context == null ? WebDriverRunner.GetWebDriver() : context;
 
-        protected override IWebElement Delegate()
-        {
-            return new ElementSelector().FindElement(GetSearchContext(), criteria);
-        }
+        protected override IWebElement Delegate() =>
+            new ElementSelector().FindElement(GetSearchContext(), criteria);
     }
 }

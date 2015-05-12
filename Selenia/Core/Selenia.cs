@@ -6,24 +6,14 @@ namespace Selenia.Core
     {
         public static readonly Browser browser = new Browser();
 
-        public static void Open(string url)
-        {
-            browser.Open(url);
-        }
+        public static void Open(string url) => browser.Open(url);
 
-        public static SeleniaElement S(string cssSelector)
-        {
-            return Get(By.CssSelector(cssSelector));
-        }
+        public static SeleniaElement S(string cssSelector) =>
+            Get(By.CssSelector(cssSelector));
 
-        public static SeleniaElement S(By seleniumSelector)
-        {
-            return Get(seleniumSelector);
-        }
+        public static SeleniaElement S(By seleniumSelector) => Get(seleniumSelector);
 
-        private static SeleniaElement Get(By criteria)
-        {
-            return WaitingSeleniaElement.Create(criteria);
-        }
+        private static SeleniaElement Get(By criteria) =>
+            WaitingSeleniaElement.Create(criteria);
     }
 }

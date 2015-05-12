@@ -4,9 +4,7 @@ namespace Selenia.Core
 {
     public class ElementSelector
     {
-        public IWebElement FindElement(ISearchContext context, By selector)
-        {
-            return context.FindElement(selector);
-        }
+        public IWebElement FindElement(ISearchContext context, By selector) =>
+            context.FindElement(selector);
     }
 }

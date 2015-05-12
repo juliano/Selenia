@@ -6,9 +6,6 @@ namespace Selenia.Core
     {
         private static WebDriverContainer container = new WebDriverContainer();
 
-        public static IWebDriver GetWebDriver()
-        {
-            return container.GetWebDriver();
-        }
+        public static IWebDriver GetWebDriver() => container.GetWebDriver();
     }
 }
