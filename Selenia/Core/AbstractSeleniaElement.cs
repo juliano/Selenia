@@ -9,7 +9,7 @@ namespace Selenia.Core
     {
         protected AbstractSeleniaElement() : base(typeof(SeleniaElement)) { }
 
-        protected abstract IWebElement Delegate();
+        protected abstract IWebElement Delegate { get; }
 
         public override IMessage Invoke(IMessage msg)
         {
@@ -30,7 +30,7 @@ namespace Selenia.Core
             }
             else if ("Enter" == method.Name)
             {
-                Delegate().SendKeys(Keys.Enter);
+                Delegate.SendKeys(Keys.Enter);
             }
             else if ("Exists" == method.Name)
             {
@@ -44,20 +44,19 @@ namespace Selenia.Core
             return new ReturnMessage(result, null, 0, methodCall.LogicalCallContext, methodCall);
         }
 
-        private string GetValue() => Delegate().GetAttribute("value");
+        private string GetValue() => Delegate.GetAttribute("value");
 
         private void SetValue(string text)
         {
-            var element = Delegate();
-            element.Clear();
-            element.SendKeys(text);
+            Delegate.Clear();
+            Delegate.SendKeys(text);
         }
 
         private bool Exists()
         {
             try
             {
-                return Delegate() != null;
+                return Delegate != null;
             }
             catch (NoSuchElementException)
             {
@@ -69,7 +68,7 @@ namespace Selenia.Core
         {
             try
             {
-                return Delegate() != null && Delegate().Displayed;
+                return Delegate != null && Delegate.Displayed;
             }
             catch (NoSuchElementException)
             {

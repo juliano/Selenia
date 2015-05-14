@@ -19,7 +19,7 @@ namespace Selenia.Core
         private ISearchContext GetSearchContext() =>
             context == null ? WebDriverRunner.GetWebDriver() : context;
 
-        protected override IWebElement Delegate() =>
+        protected override IWebElement Delegate =>
             new ElementSelector().FindElement(GetSearchContext(), criteria);
     }
 }
