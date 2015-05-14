@@ -20,7 +20,7 @@ namespace Selenia.Tests.Integration
         public void FindElementBySeleniumSelector()
         {
             S(By.Name("country")).Exists().Should().BeTrue();
-            S(By.ClassName("class1")).Exists().Should().BeTrue();
+            S(By.ClassName("invisible")).Exists().Should().BeTrue();
 
             S(By.Name("non-existent-name")).Exists().Should().BeFalse();
         }
@@ -32,6 +32,15 @@ namespace Selenia.Tests.Integration
             S(".class2").Exists().Should().BeTrue();
 
             S(".non-existent-class").Exists().Should().BeFalse();
+        }
+
+        [Fact]
+        public void CheckIfElementIsDisplayed()
+        {
+            S(By.Name("country")).Displayed.Should().BeTrue();
+            S(".invisible").Displayed.Should().BeFalse();
+
+            S(".non-existent-class").Displayed.Should().BeFalse();
         }
     }
 }

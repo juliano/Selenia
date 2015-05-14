@@ -36,6 +36,10 @@ namespace Selenia.Core
             {
                 result = Exists();
             }
+            else if("get_Displayed" == method.Name)
+            {
+                result = Displayed();
+            }
 
             return new ReturnMessage(result, null, 0, methodCall.LogicalCallContext, methodCall);
         }
@@ -54,6 +58,18 @@ namespace Selenia.Core
             try
             {
                 return Delegate() != null;
+            }
+            catch (NoSuchElementException)
+            {
+                return false;
+            }
+        }
+
+        private bool Displayed()
+        {
+            try
+            {
+                return Delegate() != null && Delegate().Displayed;
             }
             catch (NoSuchElementException)
             {
