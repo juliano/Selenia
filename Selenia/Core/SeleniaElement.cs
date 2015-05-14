@@ -9,5 +9,7 @@ namespace Selenia.Core
         SeleniaElement Value(string text);
 
         SeleniaElement Enter();
+
+        bool Exists();
     }
 }

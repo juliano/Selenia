@@ -32,6 +32,10 @@ namespace Selenia.Core
             {
                 Delegate().SendKeys(Keys.Enter);
             }
+            else if ("Exists" == method.Name)
+            {
+                result = Delegate() != null;
+            }
 
             return new ReturnMessage(result, null, 0, methodCall.LogicalCallContext, methodCall);
         }
