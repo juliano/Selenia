@@ -17,9 +17,21 @@ namespace Selenia.Tests.Integration
         }
 
         [Fact]
-        public void ChecksIfElementExistsWithSeleniumByName()
+        public void FindElementBySeleniumSelector()
         {
             S(By.Name("country")).Exists().Should().BeTrue();
+            S(By.ClassName("class1")).Exists().Should().BeTrue();
+
+            S(By.Name("non-existent-name")).Exists().Should().BeFalse();
+        }
+
+        [Fact]
+        public void FindElementBySelector()
+        {
+            S("#someId").Exists().Should().BeTrue();
+            S(".class2").Exists().Should().BeTrue();
+
+            S(".non-existent-class").Exists().Should().BeFalse();
         }
     }
 }

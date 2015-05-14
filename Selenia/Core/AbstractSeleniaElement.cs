@@ -34,7 +34,7 @@ namespace Selenia.Core
             }
             else if ("Exists" == method.Name)
             {
-                result = Delegate() != null;
+                result = Exists();
             }
 
             return new ReturnMessage(result, null, 0, methodCall.LogicalCallContext, methodCall);
@@ -47,6 +47,18 @@ namespace Selenia.Core
             var element = Delegate();
             element.Clear();
             element.SendKeys(text);
+        }
+
+        private bool Exists()
+        {
+            try
+            {
+                return Delegate() != null;
+            }
+            catch (NoSuchElementException)
+            {
+                return false;
+            }
         }
     }
 }
