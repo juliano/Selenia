@@ -40,6 +40,10 @@ namespace Selenia.Core
             {
                 result = Displayed();
             }
+            else if("Append" == method.Name)
+            {
+                Delegate.SendKeys(methodCall.Args[0] as string);
+            }
 
             return new ReturnMessage(result, null, 0, methodCall.LogicalCallContext, methodCall);
         }

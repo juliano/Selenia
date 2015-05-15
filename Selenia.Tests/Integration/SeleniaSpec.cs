@@ -17,7 +17,7 @@ namespace Selenia.Tests.Integration
         }
 
         [Fact]
-        public void FindElementBySeleniumSelector()
+        public void FindsElementBySeleniumSelector()
         {
             S(By.Name("country")).Exists().Should().BeTrue();
             S(By.ClassName("invisible")).Exists().Should().BeTrue();
@@ -26,7 +26,7 @@ namespace Selenia.Tests.Integration
         }
 
         [Fact]
-        public void FindElementBySelector()
+        public void FindsElementBySelector()
         {
             S("#someId").Exists().Should().BeTrue();
             S(".class2").Exists().Should().BeTrue();
@@ -35,7 +35,7 @@ namespace Selenia.Tests.Integration
         }
 
         [Fact]
-        public void CheckIfElementIsDisplayed()
+        public void ChecksIfElementIsDisplayed()
         {
             S(By.Name("country")).Displayed.Should().BeTrue();
             S(".invisible").Displayed.Should().BeFalse();
@@ -44,10 +44,18 @@ namespace Selenia.Tests.Integration
         }
 
         [Fact]
-        public void SetValueToTextfield()
+        public void SetsValueToTextfield()
         {
             S("#someTextbox").Value("Daenerys");
             S("#someTextbox").Value().Should().Be("Daenerys");
+        }
+
+        [Fact]
+        public void AppendsValueToTextfield()
+        {
+            S("#someTextbox").Value("Daenerys");
+            S("#someTextbox").Append(" Targaryen");
+            S("#someTextbox").Value().Should().Be("Daenerys Targaryen");
         }
     }
 }

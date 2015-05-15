@@ -11,5 +11,7 @@ namespace Selenia.Core
         SeleniaElement Enter();
 
         bool Exists();
+
+        SeleniaElement Append(string text);
     }
 }
