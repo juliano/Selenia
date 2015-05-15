@@ -42,5 +42,12 @@ namespace Selenia.Tests.Integration
 
             S(".non-existent-class").Displayed.Should().BeFalse();
         }
+
+        [Fact]
+        public void SetValueToTextfield()
+        {
+            S("#someTextbox").Value("Daenerys");
+            S("#someTextbox").Value().Should().Be("Daenerys");
+        }
     }
 }
