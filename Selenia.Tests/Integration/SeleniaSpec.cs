@@ -57,5 +57,12 @@ namespace Selenia.Tests.Integration
             S("#someTextbox").Append(" Targaryen");
             S("#someTextbox").Value().Should().Be("Daenerys Targaryen");
         }
+
+        [Fact]
+        public void ChecksIfElementContainsText()
+        {
+            S("h1").Text.Should().Be("Selenia Rocks!");
+            S("h2").Text.Should().Be("Selenia Test Page");
+        }
     }
 }

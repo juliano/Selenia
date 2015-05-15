@@ -44,6 +44,10 @@ namespace Selenia.Core
             {
                 Delegate.SendKeys(methodCall.Args[0] as string);
             }
+            else if ("get_Text" == method.Name)
+            {
+                result = Delegate.Text;
+            }
 
             return new ReturnMessage(result, null, 0, methodCall.LogicalCallContext, methodCall);
         }
