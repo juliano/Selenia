@@ -75,5 +75,12 @@ namespace Selenia.Tests.Integration
             S(ByAttribute("readonly", "readonly")).GetAttribute("name").Should().Be("username");
             S(ByAttribute("http-equiv", "content-type")).TagName.Should().Be("meta");
         }
+
+        [Fact]
+        public void FindsElementByValue()
+        {
+            S(ByValue("germany")).TagName.Should().Be("option");
+            S(ByValue("user")).TagName.Should().Be("input");
+        }
     }
 }
