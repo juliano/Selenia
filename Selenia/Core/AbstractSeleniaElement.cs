@@ -16,6 +16,13 @@ namespace Selenia.Core
             var methodCall = msg as IMethodCallMessage;
             var method = methodCall.MethodBase as MethodInfo;
 
+            return method.DeclaringType == typeof(SeleniaElement) ?
+                Resolve(methodCall, method) :
+                DelegateToSelenium(methodCall, method);
+        }
+
+        private IMessage Resolve(IMethodCallMessage methodCall, MethodInfo method)
+        {
             object result = GetTransparentProxy() as SeleniaElement;
             if ("Value" == method.Name)
             {
@@ -47,10 +54,6 @@ namespace Selenia.Core
             else if ("get_Text" == method.Name)
             {
                 result = Delegate.Text;
-            }
-            else if ("get_TagName" == method.Name)
-            {
-                result = Delegate.TagName;
             }
 
             return new ReturnMessage(result, null, 0, methodCall.LogicalCallContext, methodCall);
@@ -86,6 +89,12 @@ namespace Selenia.Core
             {
                 return false;
             }
+        }
+
+        private IMessage DelegateToSelenium(IMethodCallMessage methodCall, MethodInfo method)
+        {
+            var result = method.Invoke(Delegate, methodCall.Args);
+            return new ReturnMessage(result, null, 0, methodCall.LogicalCallContext, methodCall);
         }
     }
 }
