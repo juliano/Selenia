@@ -57,6 +57,7 @@
     <Compile Include="Core\WebDriverContainer.cs" />
     <Compile Include="Core\WebDriverRunner.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Core\Selectors.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
