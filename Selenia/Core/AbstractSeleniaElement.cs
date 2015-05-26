@@ -36,17 +36,21 @@ namespace Selenia.Core
             {
                 result = Exists();
             }
-            else if("get_Displayed" == method.Name)
+            else if ("get_Displayed" == method.Name)
             {
                 result = Displayed();
             }
-            else if("Append" == method.Name)
+            else if ("Append" == method.Name)
             {
                 Delegate.SendKeys(methodCall.Args[0] as string);
             }
             else if ("get_Text" == method.Name)
             {
                 result = Delegate.Text;
+            }
+            else if ("get_TagName" == method.Name)
+            {
+                result = Delegate.TagName;
             }
 
             return new ReturnMessage(result, null, 0, methodCall.LogicalCallContext, methodCall);

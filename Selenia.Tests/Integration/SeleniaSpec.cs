@@ -3,6 +3,7 @@ using OpenQA.Selenium;
 using System.IO;
 using Xunit;
 using static Selenia.Core.Selenia;
+using static Selenia.Core.Selectors;
 
 namespace Selenia.Tests.Integration
 {
@@ -63,6 +64,12 @@ namespace Selenia.Tests.Integration
         {
             S("h1").Text.Should().Be("Selenia Rocks!");
             S("h2").Text.Should().Be("Selenia Test Page");
+        }
+
+        [Fact]
+        public void FindsElementByAttribute()
+        {
+            S(ByAttribute("name", "country")).TagName.Should().Be("select");
         }
     }
 }
