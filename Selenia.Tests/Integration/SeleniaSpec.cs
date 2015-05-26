@@ -70,6 +70,10 @@ namespace Selenia.Tests.Integration
         public void FindsElementByAttribute()
         {
             S(ByAttribute("name", "country")).TagName.Should().Be("select");
+            S(ByAttribute("value", "brazil")).Text.Should().Be("Brazil");
+            S(ByAttribute("id", "someId")).TagName.Should().Be("div");
+            S(ByAttribute("readonly", "readonly")).GetAttribute("name").Should().Be("username");
+            S(ByAttribute("http-equiv", "content-type")).TagName.Should().Be("meta");
         }
     }
 }
