@@ -15,5 +15,7 @@ namespace Selenia.Core
         new bool Displayed { get; }
 
         SeleniaElement Append(string text);
+
+        string Data(string dataAttribute);
     }
 }

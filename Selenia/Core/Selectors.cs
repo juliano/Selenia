@@ -8,5 +8,8 @@ namespace Selenia.Core
             By.XPath($".//*[@{name}=\"{value}\"]");
 
         public static By ByValue(string value) => ByAttribute("value", value);
+
+        public static By ByData(string name, string value) =>
+            ByAttribute($"data-{name}", value);
     }
 }

@@ -82,5 +82,19 @@ namespace Selenia.Tests.Integration
             S(ByValue("germany")).TagName.Should().Be("option");
             S(ByValue("user")).TagName.Should().Be("input");
         }
+
+        [Fact]
+        public void FindsElementByData()
+        {
+            S(ByData("suffix", "br")).Text.Should().Be("Brazil");
+            S(ByData("suffix", "de")).TagName.Should().Be("option");
+        }
+
+        [Fact]
+        public void GetsDataAttributes()
+        {
+            S(ByValue("germany")).Data("suffix").Should().Be("de");
+            S(".class1").Data("something").Should().Be("wow");
+        }
     }
 }
