@@ -59,6 +59,14 @@ namespace Selenia.Core
             {
                 result = Delegate.GetAttribute($"data-{methodCall.Args[0]}");
             }
+            else if ("get_Name" == method.Name)
+            {
+                result = Delegate.GetAttribute("name");
+            }
+            else if("Attr" == method.Name)
+            {
+                result = Delegate.GetAttribute(methodCall.Args[0] as string);
+            }
 
             return new ReturnMessage(result, null, 0, methodCall.LogicalCallContext, methodCall);
         }

@@ -17,5 +17,9 @@ namespace Selenia.Core
         SeleniaElement Append(string text);
 
         string Data(string dataAttribute);
+
+        string Name { get; }
+
+        string Attr(string name);
     }
 }

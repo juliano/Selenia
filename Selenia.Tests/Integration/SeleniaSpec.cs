@@ -102,5 +102,19 @@ namespace Selenia.Tests.Integration
         {
             S(ByTitle("Login Here")).TagName.Should().Be("section");
         }
+
+        [Fact]
+        public void GetsNameAttribute()
+        {
+            S("#countryId").Name.Should().Be("country");
+            S(ByValue("user")).Name.Should().Be("username");
+        }
+
+        [Fact]
+        public void GetsAttr()
+        {
+            S("#countryId").Attr("name").Should().Be("country");
+            S(".class1").Attr("type").Should().Be("hidden");
+        }
     }
 }
