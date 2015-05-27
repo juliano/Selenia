@@ -11,5 +11,7 @@ namespace Selenia.Core
 
         public static By ByData(string name, string value) =>
             ByAttribute($"data-{name}", value);
+
+        public static By ByTitle(string title) => ByAttribute("title", title);
     }
 }

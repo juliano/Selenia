@@ -96,5 +96,11 @@ namespace Selenia.Tests.Integration
             S(ByValue("germany")).Data("suffix").Should().Be("de");
             S(".class1").Data("something").Should().Be("wow");
         }
+
+        [Fact]
+        public void FindsElementByTitle()
+        {
+            S(ByTitle("Login Here")).TagName.Should().Be("section");
+        }
     }
 }
